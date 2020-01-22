@@ -1,0 +1,86 @@
+<html>
+	<head>
+	</head>
+	<body>
+		<div class="container">
+			<center>
+			<table border=1>
+				<tr>
+					<td>Sl.no</td>
+					<td>College Name</td>
+					<td>College Location</td>
+					<td>Priority</td>
+				</tr>
+				<tr>
+					<td>1.</td>
+					<td>SJBIT</td>
+					<td>Bangalore</td>
+					<td >
+						<select name="college1" onchange="remove(event, '1')" id="college1">
+							
+						</select>
+					</td>
+				</tr>
+				<tr>
+					<td>2.</td>
+					<td>Sahyadri</td>
+					<td>Mangalore</td>
+					<td><select name="college2" onchange="remove(event, '2')" id="college2">
+						
+					</select></td>
+				</tr>
+				<tr>
+					<td>3.</td>
+					<td>BVBCE</td>
+					<td>Hubli</td>
+					<td><select name="College3" onchange="remove(event, '3')" id="college3">
+						
+					</select></td>
+				</tr>
+				<tr>
+					<td><input type="submit" name="submit1"></td>
+				</tr>
+			</table>
+		</center>
+		</div>
+
+		<script>
+			 var priorities = ["1", "2", "3"];
+			 var removed_priority = []
+
+			 for (let j of priorities){
+
+			 	 let document_object = document.getElementById(`college${j}`);
+				 document_object.innerHTML += `<option value="#">select priority</option>`
+
+				 for(let i of priorities){
+				 	let document_object = document.getElementById(`college${j}`);
+				 	document_object.innerHTML += `<option value="${i}">${i}</option>`
+				 	}
+			  }
+
+			function remove(event, college_number){
+			    let selected_priority = event.target.value
+
+
+				let priority_index = priorities.indexOf(selected_priority)
+
+				priorities.splice(priority_index, 1)
+
+				for (let j of priorities){
+
+			 	 let document_object = document.getElementById(`college${j}`);
+			 	 
+				 document_object.innerHTML = `<option value="#">select priority</option>`
+
+				 for(let i of priorities){
+				 	let document_object = document.getElementById(`college${j}`);
+				 	document_object.innerHTML += `<option value="${i}">${i}</option>`
+				 	}
+			    }
+
+			}
+
+		</script>
+	</body>
+</html>
